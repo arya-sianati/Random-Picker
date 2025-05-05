@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 class RandomPickerPage extends StatelessWidget {
-  const RandomPickerPage({super.key, required this.savedItems});
-  final List<String> savedItems;
-
-  String getRandomItem(List<String> items) {
-    if (items.isEmpty) return 'No items';
-    final random = Random();
-    return items[random.nextInt(items.length)];
-  }
+  const RandomPickerPage({super.key, required this.item});
+  final String item;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +16,7 @@ class RandomPickerPage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text(getRandomItem(savedItems), style: TextStyle(fontSize: 24)),
+        child: Text(item, style: TextStyle(fontSize: 24)),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.fromLTRB(40.0, 10.0, 40.0, 25.0),

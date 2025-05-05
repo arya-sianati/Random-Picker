@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
+
 import 'package:random_picker/views/pages/random_picker_page.dart';
 
 class RandomName extends StatefulWidget {
@@ -47,6 +49,12 @@ class _RandomNameState extends State<RandomName> {
     return List<String>.from(savedItems);
   }
 
+  String getRandomItem(List<String> items) {
+    if (items.isEmpty) return 'No items';
+    final random = Random();
+    return items[random.nextInt(items.length)];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,68 +63,67 @@ class _RandomNameState extends State<RandomName> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(40.0, 50.0, 40.0, 25.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (int i = 0; i < _controllers.length; i++)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: SizedBox(
-                            height: 50,
-                            child: TextField(
-                              controller: _controllers[i],
-                              decoration: InputDecoration(
-                                labelText: 'Item ${i + 1}',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(40.0, 50.0, 40.0, 25.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  for (int i = 0; i < _controllers.length; i++)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: SizedBox(
+                              height: 50,
+                              child: TextField(
+                                controller: _controllers[i],
+                                decoration: InputDecoration(
+                                  labelText: 'Item ${i + 1}',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
                                 ),
+                                onEditingComplete: () {
+                                  setState(() {});
+                                },
                               ),
-                              onEditingComplete: () {
-                                setState(() {});
-                              },
                             ),
                           ),
-                        ),
-                        if (_controllers.length > 1)
-                          SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: IconButton(
-                              icon: const Icon(
-                                Icons.remove_circle,
-                                color: Colors.red,
+                          if (_controllers.length > 1)
+                            SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.remove_circle,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () => _removeInputField(i),
                               ),
-                              onPressed: () => _removeInputField(i),
                             ),
-                          ),
-                        // const SizedBox(width: 30.0),
-                        // else
-                        // const SizedBox(width: 50.0),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                FilledButton(
-                  onPressed: () {
-                    _addInputField();
-                  },
-                  style: FilledButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
+                  FilledButton(
+                    onPressed: () {
+                      _addInputField();
+                    },
+                    style: FilledButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      minimumSize: const Size(double.infinity, 50),
                     ),
-                    minimumSize: const Size(double.infinity, 50),
+                    child: const Icon(Icons.add, color: Colors.white),
                   ),
-                  child: const Icon(Icons.add, color: Colors.white),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -138,7 +145,9 @@ class _RandomNameState extends State<RandomName> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => RandomPickerPage(savedItems: savedItems),
+                builder:
+                    (context) =>
+                        RandomPickerPage(item: getRandomItem(savedItems)),
               ),
             );
           },
