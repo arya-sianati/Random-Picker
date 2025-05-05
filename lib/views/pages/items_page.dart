@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:random_picker/views/pages/random_name.dart';
-import 'package:random_picker/views/pages/random_number.dart';
+import 'package:random_picker/views/pages/coin%20flip/coin_flip.dart';
+import 'package:random_picker/views/pages/random%20name/random_name.dart';
+import 'package:random_picker/views/pages/random%20number/random_number.dart';
 
 class ItemsPage extends StatelessWidget {
   const ItemsPage({super.key});
@@ -8,7 +9,7 @@ class ItemsPage extends StatelessWidget {
   final List<Map<String, dynamic>> items = const [
     {'name': 'Random Name', 'desc': '🧑', 'destination': RandomName()},
     {'name': 'Random Number', 'desc': '🔢', 'destination': RandomNumber()},
-    {'name': 'Coin Flip', 'desc': '🪙', 'destination': ''},
+    {'name': 'Coin Flip', 'desc': '🪙', 'destination': CoinFlip()},
     {'name': 'Dice Roll', 'desc': '🎲', 'destination': ''},
     {'name': 'Card Draw', 'desc': '🃏', 'destination': ''},
     {'name': 'Random Color', 'desc': '🎨', 'destination': ''},
