@@ -92,6 +92,33 @@ class _RandomNumberState extends State<RandomNumber> {
               );
               return;
             }
+            else if (int.tryParse(controllerfirst.text) == null || int.tryParse(controllerlast.text) == null) {
+              ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Please enter valid numbers'),
+                duration: Duration(seconds: 2),
+              ),
+              );
+              return;
+            }
+            else if (int.parse(controllerfirst.text) > int.parse(controllerlast.text)) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('First number should be less than last number'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+              return;
+            }
+            else if (controllerfirst.text == controllerlast.text) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Both numbers are the same'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+              return;
+            }
 
             Navigator.push(
               context,
