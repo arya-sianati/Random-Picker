@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:random_picker/views/pages/random%20number/random_picker_page.dart';
+import 'package:random_picker/views/pages/random%20number/random_number_picker.dart';
 
 class RandomName extends StatefulWidget {
   const RandomName({super.key});

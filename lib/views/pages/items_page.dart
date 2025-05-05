@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:random_picker/views/pages/coin%20flip/coin_flip.dart';
-import 'package:random_picker/views/pages/random%20name/random_name.dart';
-import 'package:random_picker/views/pages/random%20number/random_number.dart';
+import 'package:random_picker/views/pages/dice%20roll/dice_roll_items.dart';
+import 'package:random_picker/views/pages/random%20name/random_name_items.dart';
+import 'package:random_picker/views/pages/random%20number/random_number_items.dart';
 
 class ItemsPage extends StatelessWidget {
-  const ItemsPage({super.key});
+  ItemsPage({super.key});
 
-  final List<Map<String, dynamic>> items = const [
+  final List<Map<String, dynamic>> items = [
     {'name': 'Random Name', 'desc': '🧑', 'destination': RandomName()},
     {'name': 'Random Number', 'desc': '🔢', 'destination': RandomNumber()},
     {'name': 'Coin Flip', 'desc': '🪙', 'destination': CoinFlip()},
-    {'name': 'Dice Roll', 'desc': '🎲', 'destination': ''},
+    {'name': 'Dice Roll', 'desc': '🎲', 'destination': DiceRoll()},
     {'name': 'Card Draw', 'desc': '🃏', 'destination': ''},
     {'name': 'Random Color', 'desc': '🎨', 'destination': ''},
     {'name': 'Random Emoji', 'desc': '😊', 'destination': ''},
