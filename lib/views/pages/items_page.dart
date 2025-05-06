@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:random_picker/views/pages/coin%20flip/coin_flip.dart';
 import 'package:random_picker/views/pages/dice%20roll/dice_roll_items.dart';
+import 'package:random_picker/views/pages/random%20color/random_color_items.dart';
 import 'package:random_picker/views/pages/random%20name/random_name_items.dart';
 import 'package:random_picker/views/pages/random%20number/random_number_items.dart';
 
@@ -13,7 +14,7 @@ class ItemsPage extends StatelessWidget {
     {'name': 'Coin Flip', 'desc': '🪙', 'destination': CoinFlip()},
     {'name': 'Dice Roll', 'desc': '🎲', 'destination': DiceRoll()},
     {'name': 'Card Draw', 'desc': '🃏', 'destination': ''},
-    {'name': 'Random Color', 'desc': '🎨', 'destination': ''},
+    {'name': 'Random Color', 'desc': '🎨', 'destination': RandomColor()},
     {'name': 'Random Emoji', 'desc': '😊', 'destination': ''},
     {'name': 'Random Time', 'desc': '⏰', 'destination': ''},
     {'name': 'Random Image', 'desc': '🖼️', 'destination': ''},
